@@ -1,0 +1,33 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem              1.0
+PortGroup               github 1.0
+
+github.setup            petervanderdoes gitflow 1.3.1
+fetch.type              git
+
+name                    git-flow-avh
+categories              devel
+platforms               darwin
+maintainers             robsonpeixoto.com:robinho openmaintainer
+license                 {Copyright LGPL}
+supported_archs         noarch
+
+description             AVH Edition Git extensions for Vincent Driessen branching.
+
+long_description        A AVH Edition collection of Git extensions to provide high-level \
+                        repository operations for Vincent Driessen branching.
+
+depends_build-append    port:git-core
+
+depends_run-append      port:getopt
+
+conflicts           	git-flow
+
+universal_variant       no
+use_configure           no
+
+build {}
+
+destroot.destdir        prefix=${destroot}${prefix}

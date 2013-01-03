@@ -1,0 +1,25 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           github 1.0
+github.setup        stedolan jq 1.1 jq-
+
+categories          devel
+platforms           darwin
+license             MIT
+maintainers         robsonpeixoto.com:robinho openmaintainer
+description         Command-line JSON processor
+long_description    jq is a lightweight and flexible command-line JSON processor
+
+checksums           rmd160  a43eb7e0b50db18708998a1538bfa81d59d8e64d \
+                    sha256  0e53d2753e40705a684f499789920f2cebfa7adfbec03a270519c25a5fc03f60
+
+use_configure       no
+
+destroot {
+    file copy ${worksrcpath}/jq ${destroot}${prefix}/bin/jq
+}
+
+depends_build       port:flex \
+                    port:bison

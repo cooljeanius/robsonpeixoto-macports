@@ -1,0 +1,65 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem              1.0
+PortGroup               github 1.0
+
+github.setup            petervanderdoes git-flow-completion 0.4.2
+fetch.type              git
+
+name                    git-flow-completion-avh
+categories              devel
+platforms               darwin
+maintainers             robsonpeixoto.com:robinho openmaintainer
+license                 {Copyright LGPL}
+supported_archs         noarch
+
+description             Bash, Zsh and fish completion support for git-flow
+long_description        ${description}
+
+depends_build-append    port:git-flow-avh
+
+variant bash_completion {
+    depends_run-append path:etc/bash_completion:bash-completion
+}
+
+variant zsh_completion description {Install git-flow-avh zsh completion file} {
+    depends_run-append path:${prefix}/bin/zsh:zsh
+}
+
+variant fish_completion description {Install git-flow-avh fish completion file} {
+    depends_run-append path:${prefix}/bin/fish:fish
+}
+
+if {
+    ![variant_isset bash_completion]
+    && ![variant_isset zsh_completion]
+    && ![variant_isset fish_completion]
+} {
+    default_variants    +bash_completion
+}
+
+destroot {
+    if {[variant_isset bash_completion]} {
+        set completion-dir ${destroot}${prefix}/etc/bash_completion.d
+        xinstall -d ${completion-dir}
+        xinstall -m 755 ${worksrcpath}/git-flow-completion.bash ${completion-dir}/git-flow-avh
+    }
+    if {[variant_isset zsh_completion]} {
+        set completion-dir ${destroot}${prefix}/share/zsh/site-functions
+        xinstall -d ${completion-dir}
+        xinstall -m 755 ${worksrcpath}/git-flow-completion.zsh ${completion-dir}/_git_flow_avh
+    }
+    if {[variant_isset fish_completion]} {
+        set completion-dir ${destroot}${prefix}/share/fish/completions
+        xinstall -d ${completion-dir}
+        xinstall -m 755  ${worksrcpath}/git.fish ${completion-dir}/git-flow-avh.fish
+    }
+}
+
+universal_variant       no
+use_configure           no
+
+build {}
+
+destroot.destdir        prefix=${destroot}${prefix}
