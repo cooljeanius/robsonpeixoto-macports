@@ -3,17 +3,17 @@
 
 PortSystem          1.0
 PortGroup           github 1.0
-github.setup        stedolan jq 1.1 jq-
+github.setup        stedolan jq 1.2 jq-
 
 categories          devel
 platforms           darwin
 license             MIT
-maintainers         robsonpeixoto.com:robinho openmaintainer
+maintainers         robsonpeixoto.com:robinho nomaintainer
 description         Command-line JSON processor
 long_description    jq is a lightweight and flexible command-line JSON processor
 
-checksums           rmd160  a43eb7e0b50db18708998a1538bfa81d59d8e64d \
-                    sha256  0e53d2753e40705a684f499789920f2cebfa7adfbec03a270519c25a5fc03f60
+checksums           rmd160  44df3e85f538a28d47aaa8b9bd9fd9cb2d1f558e \
+                    sha256  c7fc8739bb9980d75a36508d1485c51aa6504c6fca49372dc39ea94b5695e5f9
 
 use_configure       no
 
