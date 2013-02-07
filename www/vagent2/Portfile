@@ -1,0 +1,26 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           github 1.0
+github.setup        varnish vagent2 2.1
+
+categories          devel
+platforms           darwin
+license             BSD
+maintainers         robsonpeixoto.com:robinho nomaintainer
+description         Varnish Agent
+long_description    Varnish Agent
+
+checksums           rmd160  4d4e46d0f69e3cb97450c1c891070ed5c9437055 \
+                    sha256  be8856c126fe4c2fdc3daf266aa229a12b3551f4fdc5800603102ed692aa6656
+
+depends_build       port:varnish \
+                    port:libmicrohttpd \
+                    port:py27-docutils \
+                    port:p5.12-libwww-perl \
+                    port:py27-demjson \
+                    port:pkgconfig \
+                    port:py27-docutils
+
+configure.args-append --with-rst2man=${prefix}/bin/rst2man-2.7.py
