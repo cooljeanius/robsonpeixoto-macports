@@ -21,9 +21,12 @@ master_sites	      http://repo.varnish-cache.org/source/
 checksums             rmd160 a911a2637ef26607aad8a1c34a83bc797a15235d \
                       sha256 2d37d18d952f58b208ac3a0706d4d3e4c0de304b1fcc9df5019571c75f148ab2
 
-depends_build         port:pkgconfig
+depends_build         port:pkgconfig \
+                      port:py27-docutils
 
 depends_lib           port:pcre
+
+configure.args-append --with-rst2man=${prefix}/bin/rst2man-2.7.py
 
 startupitem.create    yes
 startupitem.pidfile   auto "${prefix}/var/run/${name}/${name}.pid"
