@@ -4,26 +4,28 @@
 PortSystem              1.0
 PortGroup               github 1.0
 
-github.setup            petervanderdoes gitflow 1.5.2
+github.setup            petervanderdoes gitflow 1.5.1
 fetch.type              git
 
 name                    git-flow-avh
 categories              devel
 platforms               darwin
-maintainers             robsonpeixoto.com:robinho openmaintainer
+maintainers             robsonpeixoto.com:robinho avirtualhome.com:macports openmaintainer
 license                 {Copyright LGPL}
 supported_archs         noarch
 
-description             AVH Edition Git extensions for Vincent Driessen branching.
+description             AVH Edition Git extensions for Vincent Driessen \
+                        branching.
 
-long_description        A AVH Edition collection of Git extensions to provide high-level \
-                        repository operations for Vincent Driessen branching.
+long_description        An AVH Edition collection of Git extensions to \
+                        provide high-level repository operations for \
+                        Vincent Driessen branching.
 
 depends_build-append    port:git-core
 
 depends_run-append      port:getopt
 
-conflicts           	git-flow
+conflicts-append        git-flow
 
 universal_variant       no
 use_configure           no

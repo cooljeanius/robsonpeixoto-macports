@@ -10,7 +10,7 @@ fetch.type              git
 name                    git-flow-completion-avh
 categories              devel
 platforms               darwin
-maintainers             robsonpeixoto.com:robinho openmaintainer
+maintainers             robsonpeixoto.com:robinho avirtualhome.com:macports openmaintainer
 license                 {Copyright LGPL}
 supported_archs         noarch
 
@@ -24,11 +24,11 @@ variant bash_completion {
 }
 
 variant zsh_completion description {Install git-flow-avh zsh completion file} {
-    depends_run-append path:${prefix}/bin/zsh:zsh
+    depends_run-append path:bin/zsh:zsh
 }
 
 variant fish_completion description {Install git-flow-avh fish completion file} {
-    depends_run-append path:${prefix}/bin/fish:fish
+    depends_run-append path:bin/fish:fish
 }
 
 if {
